@@ -25,8 +25,7 @@
 * which key
   Brings up some help
   #+BEGIN_SRC emacs-lisp
-  (use-package which-key
-	:ensure t 
+  (use-package which-key 
 	:config
 	(which-key-mode))
   #+END_SRC
@@ -37,14 +36,12 @@
   Org bullets makes things look pretty
   #+BEGIN_SRC emacs-lisp
 
-  (use-package org 
-  :ensure t
+  (use-package org
   :pin org)
 
     (setenv "BROWSER" "chromium-browser")
 
         (use-package org-bullets
-        :ensure t
         :config
         (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
@@ -122,8 +119,7 @@
         (if (equal "capture" (frame-parameter nil 'name))  
         (delete-frame)))  
 
-        (use-package noflet
-        :ensure t )
+        (use-package noflet )
         (defun make-capture-frame ()
         "Create a new frame and run org-capture."
         (interactive)
@@ -137,7 +133,7 @@
 ; for inserting inactive dates
 (define-key org-mode-map (kbd "C-c >") (lambda () (interactive (org-time-stamp-inactive))))
 
-(use-package htmlize :ensure t)
+(use-package htmlize)
 
 
   #+END_SRC
@@ -148,7 +144,6 @@
 * Ace windows for easy window switching
   #+BEGIN_SRC emacs-lisp
   (use-package ace-window
-  :ensure t
   :init
   (progn
   (setq aw-scope 'frame)
@@ -171,7 +166,6 @@
 
 
    (use-package counsel
-:ensure t
   :bind
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
@@ -181,7 +175,6 @@
 
 
   (use-package ivy
-  :ensure t
   :diminish (ivy-mode)
   :bind (("C-x b" . ivy-switch-buffer))
   :config
@@ -192,7 +185,6 @@
 
 
   (use-package swiper
-  :ensure t
   :bind (("C-s" . swiper)
 	 ("C-r" . swiper)
 	 ("C-c C-r" . ivy-resume)
@@ -211,14 +203,12 @@
   See https://github.com/abo-abo/avy for more info
   #+BEGIN_SRC emacs-lisp
   (use-package avy
-  :ensure t
   :bind ("M-s" . avy-goto-word-1)) ;; changed from char as per jcs
   #+END_SRC
 
 * Autocomplete
   #+BEGIN_SRC emacs-lisp  :tangle no
-     (use-package auto-complete 
-     :ensure t
+     (use-package auto-complete
      :init
      (progn
      (ac-config-default)
@@ -228,7 +218,6 @@
 * Company
 #+BEGIN_SRC emacs-lisp
 (use-package company
-:ensure t
 :config
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 3)
@@ -237,14 +226,12 @@
 )
 
 (use-package company-irony
-:ensure t
 :config 
 (add-to-list 'company-backends 'company-irony)
 
 )
 
 (use-package irony
-:ensure t
 :config
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
@@ -252,7 +239,6 @@
 )
 
 (use-package irony-eldoc
-:ensure t
 :config
 (add-hook 'irony-mode-hook #'irony-eldoc))
 
@@ -261,7 +247,6 @@
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 (use-package company-jedi
-    :ensure t
     :config
     (add-hook 'python-mode-hook 'jedi:setup)
        )
@@ -273,7 +258,6 @@
 
 ;; company box mode
 ;(use-package company-box
-;:ensure t
 ;  :hook (company-mode . company-box-mode)) 
 
 
@@ -284,35 +268,27 @@
 * Themes and modeline
   #+BEGIN_SRC emacs-lisp 
 
-        (use-package color-theme-modern
-          :ensure t)
+        (use-package color-theme-modern)
     
         (use-package zenburn-theme
-          :ensure t
           ; :config (load-theme 'zenburn t))
           )
 
 
         ;(use-package spacemacs-theme
-        ;  :ensure t
         ;  ;:init
         ;  ;(load-theme 'spacemacs-dark t)
         ;  )
         (use-package base16-theme
-        :ensure t
         )
-        (use-package moe-theme
-        :ensure t)
+        (use-package moe-theme)
 
 
-        (use-package alect-themes
-        :ensure t)
+        (use-package alect-themes)
 
         (use-package poet-theme
-        :ensure t
         )
-        (use-package zerodark-theme
-        :ensure t)
+        (use-package zerodark-theme)
 
         ;;(load-theme 'zerodark t)
         ;;(zerodark-setup-modeline-format)
@@ -324,14 +300,12 @@
 * Reveal.js
   #+BEGIN_SRC emacs-lisp  :tangle no
   (use-package ox-reveal
-  :ensure t
   :config
     (require 'ox-reveal)
     (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
     (setq org-reveal-mathjax t)
 )
-    (use-package htmlize
-    :ensure t)
+    (use-package htmlize)
   #+END_SRC
 
   #+RESULTS:
@@ -340,7 +314,6 @@
 * Flycheck
   #+BEGIN_SRC emacs-lisp
     (use-package flycheck
-      :ensure t
       :init
       (global-flycheck-mode t))
 
@@ -353,12 +326,10 @@
  
 
             (use-package elpy
-            :ensure t
             :config 
             (elpy-enable))
 
         (use-package virtualenvwrapper
-          :ensure t
           :config
           (venv-initialize-interactive-shells)
           (venv-initialize-eshell))
@@ -371,12 +342,10 @@
 * Yasnippet
   #+BEGIN_SRC emacs-lisp
     (use-package yasnippet
-      :ensure t
       :init
         (yas-global-mode 1))
 
-;    (use-package yasnippet-snippets
-;      :ensure t)
+;    (use-package yasnippet-snippets)
   #+END_SRC
 
   #+RESULTS:
@@ -384,7 +353,6 @@
 * Undo Tree
   #+BEGIN_SRC emacs-lisp
     (use-package undo-tree
-      :ensure t
       :init
       (global-undo-tree-mode))
   #+END_SRC
@@ -396,7 +364,6 @@
   
   ; flashes the cursor's line when you scroll
   (use-package beacon
-  :ensure t
   :config
   (beacon-mode 1)
   ; (setq beacon-color "#666600")
@@ -404,17 +371,14 @@
   
   ; deletes all the whitespace when you hit backspace or delete
   (use-package hungry-delete
-  :ensure t
   :config
   (global-hungry-delete-mode))
   
 
-  (use-package multiple-cursors
-  :ensure t)
+  (use-package multiple-cursors)
 
   ; expand the marked region in semantic increments (negative prefix to reduce region)
   (use-package expand-region
-  :ensure t
   :config 
   (global-set-key (kbd "C-=") 'er/expand-region))
 
@@ -434,8 +398,7 @@
 
   #+BEGIN_SRC emacs-lisp
   ; mark and edit all copies of the marked region simultaniously. 
-  (use-package iedit
-  :ensure t)
+  (use-package iedit)
   
   ; if you're windened, narrow to the region, if you're narrowed, widen
   ; bound to C-x n
@@ -476,7 +439,6 @@
 * Web Mode
 #+BEGIN_SRC emacs-lisp
     (use-package web-mode
-      :ensure t
       :config
 	   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 	   (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
@@ -497,7 +459,6 @@
 * Emmet mode
 #+BEGIN_SRC emacs-lisp
 (use-package emmet-mode
-:ensure t
 :config
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
@@ -507,7 +468,6 @@
 * Javascript
 #+BEGIN_SRC emacs-lisp
 (use-package js2-mode
-:ensure t
 :ensure ac-js2
 :init
 (progn
@@ -516,7 +476,6 @@
 ))
 
 (use-package js2-refactor
-:ensure t
 :config 
 (progn
 (js2r-add-keybindings-with-prefix "C-c C-m")
@@ -534,7 +493,6 @@
 ))
 
 ;;(use-package jade
-;;:ensure t
 ;;)
 
 ;; use web-mode for .jsx files
@@ -573,8 +531,7 @@
 * DIRED
 #+BEGIN_SRC emacs-lisp
 ; wiki melpa problem
-;(use-package dired+
-;  :ensure t
+;(use-package dired
 ;  :config (require 'dired+)
 ;  )
 
@@ -611,19 +568,16 @@
        ))
   ;; projectile
     (use-package projectile
-      :ensure t
       :bind ("C-c p" . projectile-command-map)
       :config
       (projectile-global-mode)
     (setq projectile-completion-system 'ivy))
 
     ;; (use-package counsel-projectile
-    ;;   :ensure t
     ;;   :config
     ;;   (counsel-projectile-on)q)
   
     (use-package smartparens
-    :ensure t
     :config
     (use-package smartparens-config)
     (use-package smartparens-html)
@@ -688,13 +642,12 @@
   
     ;; font scaling
     (use-package default-text-scale
-      :ensure t
      :config
       (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
       (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
 
 
-    ;; (use-package frame-cmds :ensure t)
+    ;; (use-package frame-cmds)
     ;; (load-file "/home/zamansky/Dropbox/shared/zoom-frm.el")
     ;; (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
     ;; (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
@@ -782,14 +735,12 @@
 * git
 #+BEGIN_SRC emacs-lisp
   (use-package magit
-    :ensure t
     :init
     (progn
     (bind-key "C-x g" 'magit-status)
     ))
 
     (use-package git-gutter
-    :ensure t
     :init
     (global-git-gutter-mode +1))
 
@@ -797,7 +748,6 @@
 
 
     (use-package git-timemachine
-    :ensure t
     )
   (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
                               :hint nil)
@@ -855,7 +805,6 @@
 * Better Shell
 #+BEGIN_SRC emacs-lisp :tangle no
   (use-package better-shell
-      :ensure t
       :bind (("C-\"" . better-shell-shell)
              ("C-:" . better-shell-remote-open)))
 #+END_SRC
@@ -867,7 +816,6 @@
 #+BEGIN_SRC emacs-lisp
 
   (use-package shell-switcher
-    :ensure t
     :config 
     (setq shell-switcher-mode t)
     :bind (("C-'" . shell-switcher-switch-buffer)
@@ -1008,7 +956,6 @@ Eshell prompt
 
 
     (use-package elfeed
-      :ensure t
       :bind (:map elfeed-search-mode-map
 		  ("q" . bjm/elfeed-save-db-and-bury)
 		  ("Q" . bjm/elfeed-save-db-and-bury)
@@ -1024,13 +971,11 @@ Eshell prompt
       )
 
     (use-package elfeed-goodies
-      :ensure t
       :config
       (elfeed-goodies/setup))
 
 
     (use-package elfeed-org
-      :ensure t
       :config
       (elfeed-org)
       (setq rmh-elfeed-org-files (list "~/Sync/shared/elfeed.org")))
@@ -1101,7 +1046,6 @@ Eshell prompt
 * c++
 #+BEGIN_SRC emacs-lisp
 (use-package ggtags
-:ensure t
 :config 
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -1115,8 +1059,7 @@ Eshell prompt
 
 * Clojure
 #+BEGIN_SRC emacs-lisp
-(use-package cider
-:ensure t)
+(use-package cider)
 
 (add-to-list 'exec-path "/home/zamansky/bin/")
 #+END_SRC
@@ -1140,8 +1083,7 @@ Eshell prompt
 #+END_SRC
 * Origami folding
 #+BEGIN_SRC emacs-lisp
-(use-package origami
-:ensure t)
+(use-package origami)
 #+END_SRC
 
 #+RESULTS:
@@ -1185,7 +1127,6 @@ Eshell prompt
 * Prodigy
 #+BEGIN_SRC emacs-lisp
     (use-package prodigy
-    :ensure t
     :config
     (load-if-exists "~/Sync/shared/prodigy-services.el")
 )
@@ -1197,7 +1138,6 @@ Eshell prompt
 * Treemacs
 #+BEGIN_SRC emacs-lisp
   (use-package treemacs
-    :ensure t
     :defer t
     :config
     (progn
@@ -1227,7 +1167,6 @@ Eshell prompt
         ))
   (use-package treemacs-projectile
     :defer t
-    :ensure t
     :config
     (setq treemacs-header-function #'treemacs-projectile-create-header)
 )
@@ -1257,7 +1196,6 @@ Eshell prompt
 * Haskell 
 #+BEGIN_SRC emacs-lisp
 (use-package haskell-mode
-:ensure t
 :config
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
@@ -1324,7 +1262,6 @@ Eshell prompt
 * shell-pop 
 #+BEGIN_SRC emacs-lisp
 (use-package shell-pop
-:ensure t
   :bind (("s-t" . shell-pop))
   :config
   (setq shell-pop-shell-type (quote ("ehell" "eshell" (lambda nil (eshell)))))
@@ -1337,10 +1274,8 @@ Eshell prompt
 * Wgrep
 #+BEGIN_SRC emacs-lisp
 (use-package wgrep
-:ensure t
 )
 (use-package wgrep-ag
-:ensure t
 )
 (require 'wgrep-ag)
 #+END_SRC
@@ -1348,14 +1283,12 @@ Eshell prompt
 #+RESULTS:
 * Silversearcher
 #+BEGIN_SRC emacs-lisp
-(use-package ag
-:ensure t)
+(use-package ag)
 
 #+END_SRC
 * Regex
 #+BEGIN_SRC emacs-lisp
 (use-package pcre2el
-:ensure t
 :config 
 (pcre-mode)
 )
@@ -1363,7 +1296,6 @@ Eshell prompt
 * Eyebrowse
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package eyebrowse
-:ensure t
 :config 
 (eyebrowse-mode)
 )
@@ -1374,25 +1306,20 @@ Eshell prompt
 
 * Music
 #+BEGIN_SRC emacs-lisp
-(use-package simple-mpc
-:ensure t)
-(use-package mingus
-:ensure t)
+(use-package simple-mpc)
+(use-package mingus)
 
 #+END_SRC
 * Atomic Chrome (edit in emacs)
 #+BEGIN_SRC emacs-lisp
 (use-package atomic-chrome
-:ensure t
 :config (atomic-chrome-start-server))
 (setq atomic-chrome-buffer-open-style 'frame)
 #+END_SRC
 * PDF tools
 #+BEGIN_SRC emacs-lisp
-(use-package pdf-tools
-:ensure t)
-(use-package org-pdfview
-:ensure t)
+(use-package pdf-tools)
+(use-package org-pdfview)
 
 (require 'pdf-tools)
 (require 'org-pdfview)
@@ -1400,13 +1327,11 @@ Eshell prompt
 #+END_SRC
 * auto-yasnippet
 #+BEGIN_SRC emacs-lisp
-(use-package auto-yasnippet
-:ensure t)
+(use-package auto-yasnippet)
 #+END_SRC
 * mu4e-conversation
 #+BEGIN_SRC emacs-lisp
 (use-package mu4e-conversation
-:ensure t
 )
 
 #+END_SRC
@@ -1434,7 +1359,6 @@ Eshell prompt
 * Easy kill
 #+BEGIN_SRC emacs-lisp
 (use-package easy-kill
-  :ensure t
   :config
   (global-set-key [remap kill-ring-save] #'easy-kill)
   (global-set-key [remap mark-sexp] #'easy-mark))
@@ -1444,7 +1368,6 @@ Eshell prompt
 * PATH 
 #+BEGIN_SRC emacs-lisp
 (use-package exec-path-from-shell
-:ensure t
 :config
 (exec-path-from-shell-initialize)
 )
