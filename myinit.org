@@ -43,7 +43,7 @@
 
         (use-package org-bullets
         :config
-        (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+        :hook org-mode)
 
             (custom-set-variables
              '(org-directory "~/Sync/orgfiles")
@@ -232,15 +232,15 @@
 )
 
 (use-package irony
+:hook (c++-mode c-mode)
 :config
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 )
 
 (use-package irony-eldoc
 :config
-(add-hook 'irony-mode-hook #'irony-eldoc))
+:hook irony-mode)
+
 
 (defun my/python-mode-hook ()
   (add-to-list 'company-backends 'company-jedi))
@@ -460,9 +460,7 @@
 #+BEGIN_SRC emacs-lisp
 (use-package emmet-mode
 :config
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+:hook (sgml-mode web-mode css-mode)
 )
 #+END_SRC
 * Javascript
